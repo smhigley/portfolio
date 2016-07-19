@@ -167,6 +167,7 @@ def add_project():
       image=form.image.data,
       link=form.link.data,
       client=form.client.data,
+      tags=form.tags.data,
       body=form.body.data,
       featured=form.featured.data,
       timestamp=datetime.now())
@@ -175,6 +176,32 @@ def add_project():
     return redirect(url_for('project', slug=form.slug.data))
 
   return render_template('project_add_edit.html', form=form, action='Create', title='New Project')
+
+@app.route('/portfolio/<slug>/edit', methods=['GET', 'POST'])
+@login_required
+def edit_project(slug):
+  project = Project.query.filter_by(slug=slug).first()
+  form = ProjectForm(obj=project)
+
+  if g.user is None or not g.user.is_authenticated:
+    return redirect(url_for('login'))
+
+  if form.validate_on_submit():
+    flash('Project updated')
+    project.title=form.title.data
+    project.slug=form.slug.data
+    project.image=form.image.data
+    project.link=form.link.data
+    project.client=form.client.data
+    project.tags=form.tags.data
+    project.body=form.body.data
+    project.featured=form.featured.data
+    project.timestamp=datetime.now()
+    db.session.add(project)
+    db.session.commit()
+    return redirect(url_for('project', slug=form.slug.data))
+
+  return render_template('project_add_edit.html', form=form, action='Edit', title='Edit Project')
 
 
 

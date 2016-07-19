@@ -17,6 +17,7 @@ class ProjectForm(Form):
   body = TextAreaField('body', validators=[validators.DataRequired()])
   image = StringField('image')
   client = StringField('client (optional)')
+  tags = StringField('list of languages, libraries, etc used in this project')
   featured = BooleanField('Feature this on the home page')
 
 class ContactForm(Form):

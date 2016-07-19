@@ -1,7 +1,7 @@
 <article class="excerpt">
   <h3><a href="{{ url_for('portfolio', slug=project.slug) }}">{{ project.title }}</a></h3>
   {% if project.image: %}
-    <img src="{{ project.get_thumbnail() }}" class="featured-thumb" alt="Featured Image">
+    <img src="{{ project.image }}" class="featured-thumb" alt="Featured Image">
   {% endif %}
   <div class="meta">
     <span class="date">{{ project.timestamp.strftime('%B %-d, %Y') }}</span>

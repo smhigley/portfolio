@@ -45,6 +45,14 @@
       {% endfor %}
     </div>
 
+    <div class="input-group {% if form.tags.errors %}error{% endif %}">
+      <label>List of languages/libraries/etc used in this project</label>
+      {{ form.tags() }}
+      {% for error in form.tags.errors %}
+        <div class="error-msg">{{ error }}</div>
+      {% endfor %}
+    </div>
+
     <div class="input-group {% if form.body.errors %}error{% endif %}">
       <label>Body</label>
       {{ form.body(rows=8, cols=20) }}

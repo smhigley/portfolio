@@ -40,6 +40,7 @@ class Project(db.Model):
   link = db.Column(db.String(64))
   body = db.Column(db.String(140))
   client = db.Column(db.String(32))
+  tags = db.Column(db.String(64))
   featured = db.Column(db.Boolean)
   timestamp = db.Column(db.DateTime)
 

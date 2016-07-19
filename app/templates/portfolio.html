@@ -3,9 +3,7 @@
 {% block content %}
   <h1>{{ title }}</h1>
 
-  {{ projects }}
-
-  {% for project in projects.items %}
+  {% for project in projects %}
     {% include '_excerpt.html' %}
   {% endfor %}
 
