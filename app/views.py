@@ -4,7 +4,7 @@ from datetime import datetime
 from app import app, db, login_manager
 from .forms import PageForm, ProjectForm, ContactForm, LoginForm
 from .models import User, Project, Page
-from config import POSTS_PER_PAGE
+from config import POSTS_PER_PAGE, ADMIN_EMAIL
 
 @app.before_request
 def before_request():
@@ -41,7 +41,7 @@ def login():
       flash(u'Access Denied. The user %s does not exist.' % form.username.data)
 
   # Show the login form for GET requests
-  return render_template("login.html", form=form)
+  return render_template("login.html", form=form, title='Login')
 
 @app.route("/logout", methods=["GET"])
 @login_required
@@ -51,24 +51,26 @@ def logout():
     return redirect(url_for('index'))
 
 #Need to update this
-@app.route('/create-new-user')
-def create_user(resp):
+@app.route('/create-new-user', methods=['GET', 'POST'])
+def create_user():
+  form = LoginForm()
   next_url = request.args.get('next') or url_for('index')
-  if resp is None:
-    flash(u'You denied the request to sign in.')
-    return redirect(next_url)
 
-  user = User.query.filter_by(social_id=fb_user.data['id']).first()
-  if user is None:
-    user = User(social_id=fb_user.data['id'], nickname=fb_user.data['name'], email=fb_user.data['email'])
-    db.session.add(user)
-    db.session.commit()
-    flash(u'New user created: %s' % fb_user.data['name'])
-    return redirect(url_for('index'))
+  if form.validate_on_submit():
+    username = form.username.data
+    user = User.query.get(username)
 
-  login_user(user, True)
-  flash('You were signed in as %s' % fb_user.data['name'])
-  return redirect(next_url)
+    if user is None:
+      user = User(id=username, email=ADMIN_EMAIL)
+      user.set_password(form.password.data)
+      db.session.add(user)
+      db.session.commit()
+      login_user(user, True)
+      return redirect(url_for('index'))
+    else:
+      flash(u'The username %s already exists' % form.username.data)
+
+  return render_template("login.html", form=form, title='Create New User')
 
 # Contact Page
 @app.route('/contact', methods=['GET', 'POST'])
