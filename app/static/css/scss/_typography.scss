@@ -61,9 +61,9 @@ h1 {
   font-size: 32px;
   font-weight: normal;
   line-height: 1.25;
-  text-transform: uppercase;
+  color: $grey;
   @include bp($bp-typography) {
-    font-size: 48px;
+    font-size: 40px;
     line-height: 1.15;
   }
 }
@@ -73,7 +73,7 @@ h2 {
   font-weight: bold;
   line-height: 1.15;
   @include bp($bp-typography) {
-    font-size: 36px;
+    font-size: 34px;
     line-height: 1.25;
   }
 }

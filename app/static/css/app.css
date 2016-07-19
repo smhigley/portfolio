@@ -516,10 +516,10 @@ h1 {
   font-size: 32px;
   font-weight: normal;
   line-height: 1.25;
-  text-transform: uppercase; }
+  color: #424242; }
   @media only screen and (min-width: 56.25em) {
     h1 {
-      font-size: 48px;
+      font-size: 40px;
       line-height: 1.15; } }
 
 h2 {
@@ -528,7 +528,7 @@ h2 {
   line-height: 1.15; }
   @media only screen and (min-width: 56.25em) {
     h2 {
-      font-size: 36px;
+      font-size: 34px;
       line-height: 1.25; } }
 
 h3 {
@@ -638,7 +638,7 @@ hr {
   border: none;
   border-top: 4px solid #191919; }
 
-.icon, .admin-bar a:before, .pagination .next:before, .pagination .prev:before {
+.icon, .admin-bar a:before, .socials a:before, .pagination .next:before, .pagination .prev:before {
   font-family: 'icomoon';
   speak: none;
   font-style: normal;
@@ -665,7 +665,9 @@ hr {
 .site-title {
   margin: 0 0 2.5em; }
   .site-title h1 {
-    margin-bottom: 0; }
+    margin-bottom: 0;
+    font-size: 48px;
+    text-transform: uppercase; }
   .site-title a {
     color: #191919; }
   .site-title .tagline {
@@ -676,17 +678,27 @@ hr {
     text-transform: uppercase; }
 
 .main-menu .menu {
-  padding: 0.5em 0;
-  border-top: 1px solid #424242;
-  border-bottom: 1px solid #424242; }
+  padding: 0.5em 0; }
 .main-menu a {
   display: block;
   font-size: 20px;
   font-weight: bold;
   text-transform: uppercase; }
 .main-menu li {
+  position: relative;
   display: inline-block;
-  margin-right: 1.25em; }
+  padding-right: 2em; }
+  .main-menu li:after {
+    content: "";
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    width: 6px;
+    height: 6px;
+    margin-top: -2px;
+    background-color: #191919; }
+  .main-menu li:last-child:after {
+    display: none; }
 
 .admin-bar {
   margin: -1.25em 0 3.125em;
@@ -719,6 +731,70 @@ hr {
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat; }
+
+.socials {
+  margin-top: 2.5em;
+  text-align: center; }
+  .socials li {
+    display: inline-block;
+    padding: 0 0.25em; }
+  .socials a {
+    position: relative;
+    display: block;
+    padding: 8px;
+    font-size: 0;
+    line-height: 0; }
+    .socials a:before {
+      position: relative;
+      font-size: 36px;
+      line-height: 1;
+      color: #191919;
+      z-index: 1;
+      -webkit-transition: color 0.3s ease;
+      -moz-transition: color 0.3s ease;
+      -ms-transition: color 0.3s ease;
+      -o-transition: color 0.3s ease;
+      transition: color 0.3s ease; }
+    .socials a:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #8A0651;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      border-radius: 50%;
+      -webkit-transform: scale(0);
+      -moz-transform: scale(0);
+      -ms-transform: scale(0);
+      -o-transform: scale(0);
+      transform: scale(0);
+      -webkit-transition: all 0.3s ease;
+      -moz-transition: all 0.3s ease;
+      -ms-transition: all 0.3s ease;
+      -o-transition: all 0.3s ease;
+      transition: all 0.3s ease; }
+    .socials a:hover:before, .socials a:focus:before {
+      color: #fff; }
+    .socials a:hover:after, .socials a:focus:after {
+      -webkit-transform: scale(1);
+      -moz-transform: scale(1);
+      -ms-transform: scale(1);
+      -o-transform: scale(1);
+      transform: scale(1); }
+  .socials .github:before {
+    content: ""; }
+  .socials .codepen:before {
+    content: "";
+    top: -1px;
+    left: 1px; }
+  .socials .instagram:before {
+    content: "";
+    left: 1px; }
+  .socials .twitter:before {
+    content: ""; }
 
 .input-group {
   margin: 0 0 1.875em; }

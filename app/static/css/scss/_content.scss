@@ -7,6 +7,8 @@
 
   h1 {
     margin-bottom: 0;
+    font-size: 48px;
+    text-transform: uppercase;
   }
   a {
     color: $dark;
@@ -36,17 +38,20 @@
   li {
     position: relative;
     display: inline-block;
-    padding-right: em-calc(20);
+    padding-right: em-calc(32);
 
     &:after {
       content: "";
       position: absolute;
-      right: 6px;
+      right: 12px;
       top: 50%;
-      width: 4px;
-      height: 4px;
+      width: 6px;
+      height: 6px;
       margin-top: -2px;
       background-color: $dark;
+    }
+    &:last-child:after {
+      display: none;
     }
   }
 }
@@ -98,6 +103,65 @@
     background-position: center center;
     background-repeat: no-repeat;
   }
+}
+
+// footer
+.socials {
+  margin-top: em-calc(40);
+  text-align: center;
+
+  li {
+    display: inline-block;
+    padding: 0 em-calc(4);
+  }
+
+  a {
+    position: relative;
+    display: block;
+    padding: 8px;
+    font-size: 0;
+    line-height: 0;
+    &:before {
+      @extend .icon;
+      position: relative;
+      font-size: 36px;
+      line-height: 1;
+      color: $dark;
+      z-index: 1;
+      @include transition(color 0.3s ease);
+    }
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: $purple;
+      @include border-radius(50%);
+      @include scale(0);
+      @include transition(all 0.3s ease);
+    }
+    &:hover, &:focus {
+      &:before {
+        color: $white;
+      }
+      &:after {
+        @include scale(1);
+      }
+    }
+  }
+  .github:before { content: $icon-github; }
+  .codepen:before {
+    content: $icon-codepen;
+    top: -1px;
+    left: 1px;
+  }
+  .instagram:before {
+    content: $icon-instagram;
+    left: 1px;
+  }
+  .twitter:before { content: $icon-twitter; }
 }
 
 // forms
