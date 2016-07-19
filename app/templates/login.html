@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Login</h1>
+  <form action="" method="post" name="contact" class="contact-form">
+    {{ form.hidden_tag() }}
+
+    <div class="input-group {% if form.username.errors %}error{% endif %}">
+      <label>Username</label>
+      {{ form.username() }}
+      {% for error in form.username.errors %}
+        <div class="error-msg">{{ error }}</div>
+      {% endfor %}
+    </div>
+
+    <div class="input-group {% if form.password.errors %}error{% endif %}">
+      <label>Password</label>
+      {{ form.password() }}
+      {% for error in form.password.errors %}
+        <div class="error-msg">{{ error }}</div>
+      {% endfor %}
+    </div>
+
+    <button type="submit">Submit</button>
+  </form>
+
+{% endblock %}
+
+{% block adminbar %}
+{% endblock %}

@@ -1,0 +1,233 @@
+@font-face {
+  font-family: 'icomoon';
+  src:url('icons/icomoon.eot?-ttchbd');
+  src:url('icons/icomoon.eot?#iefix') format('embedded-opentype'),
+    url('icons/icomoon.woff') format('woff'),
+    url('icons/icomoon.ttf') format('truetype'),
+    url('icons/icomoon.svg?#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: $body-font;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  color: $dark;
+}
+
+.menu {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    margin: 0;
+  }
+}
+
+.hide-text {
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.center {
+  text-align: center;
+}
+
+a {
+  color: $purple;
+  text-decoration: none;
+  &, &:before, &:after {
+    @include transition(background 0.25s ease, color 0.25s ease);
+  }
+
+  &:hover, &:focus {
+    color: lighten($purple, 30%);
+    outline: none;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  display: block;
+  margin: 0 0 20px;
+  text-align: left;
+}
+
+h1 {
+  font-family: $heading-font;
+  font-size: 32px;
+  font-weight: normal;
+  line-height: 1.25;
+  text-transform: uppercase;
+  @include bp($bp-typography) {
+    font-size: 48px;
+    line-height: 1.15;
+  }
+}
+
+h2 {
+  font-size: 26px;
+  font-weight: bold;
+  line-height: 1.15;
+  @include bp($bp-typography) {
+    font-size: 36px;
+    line-height: 1.25;
+  }
+}
+
+h3 {
+  font-family: $heading-font;
+  font-size: 22px;
+  line-height: 1.15;
+  font-weight: normal;
+  text-transform: uppercase;
+  @include bp($bp-typography) {
+    font-size: 28px;
+    line-height: 1.25;
+  }
+}
+
+h4 {
+  font-size: 18px;
+  line-height: 1.2;
+  font-weight: normal;
+  font-style: italic;
+  @include bp($bp-typography) {
+    font-size: 24px;
+    line-height: 1.25;
+  }
+}
+
+h5, h6 {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: left;
+}
+
+p, ul, ol, pre {
+  margin: 0 0 em-calc(30);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.content {
+  p, ul, ol {
+    font-size: 18px;
+  }
+}
+
+li {
+  margin-bottom: em-calc(8);
+}
+
+blockquote {
+  padding: em-calc(8, 18) 0 em-calc(8, 18) em-calc(20, 18);
+  border-left: 10px solid $yellow;
+  margin: 0 0 em-calc(30, 18);
+  font-size: 18px;
+  font-weight: normal;
+  font-style: italic;
+
+  p {
+    font-size: 18px;
+    font-weight: normal;
+    font-style: italic;
+    margin-bottom: 0.8em;
+  }
+
+  p:last-child {
+    margin: 0;
+  }
+}
+
+img {
+  max-width: 100%;
+}
+
+figure {
+  margin: 0 em-calc(-16) em-calc(30);
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+figcaption {
+  display: block;
+  margin-top: em-calc(10);
+  font-style: italic;
+  text-align: center;
+}
+
+svg {
+  // odd height fix for iphone
+  height: 100%;
+}
+
+.video-container {
+  width: 100%;
+  position: relative;
+  margin-bottom: em-calc(40);
+  &:after {
+    content: "";
+    display: block;
+    width: 100%;
+    padding-bottom: 75%;
+  }
+  iframe {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+code {
+  display: inline-block;
+  padding: 2px 5px;
+  background-color: $light-grey;
+  @include border-radius(4px);
+}
+pre {
+  padding: em-calc(20);
+  border: 1px solid $grey;
+  background-color: $light-grey;
+  line-height: 1.2;
+}
+
+hr {
+  display: block;
+  width: 80%;
+  margin: 1.875em auto;
+  border: none;
+  border-top: 4px solid $dark;
+}
+
+.icon {
+  font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.simple-button {
+  display: inline-block;
+  padding: em-calc(4) em-calc(24);
+  border: 1px solid darken($light-grey, 10%);
+  background-color: $light-grey;
+  color: $dark;
+
+  &:hover, &:focus {
+    background-color: $purple;
+    color: #fff;
+  }
+}
+

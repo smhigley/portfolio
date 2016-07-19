@@ -1,0 +1,66 @@
+// base variables and functions
+
+// em calculation
+$em-base: 16px;
+
+@function strip-unit($num) {
+  @return $num / ($num * 0 + 1);
+}
+
+@function convert-to-em($value, $base-value: $em-base)  {
+  $value: strip-unit($value) / strip-unit($base-value) * 1em;
+  @if ($value == 0em) { $value: 0; } // Turn 0em into 0
+  @return $value;
+}
+
+@function em-calc($values, $base-value: $em-base) {
+  $max: length($values);
+
+  @if $max == 1 { @return convert-to-em(nth($values, 1), $base-value); }
+
+  $emValues: ();
+  @for $i from 1 through $max {
+    $emValues: append($emValues, convert-to-em(nth($values, $i), $base-value));
+  }
+  @return $emValues;
+}
+
+// grid variables
+$row-width: em-calc(800);
+$total-columns: 12;
+$column-gutter: em-calc(30);
+
+// global breakpoint vars
+$bp-layout: 780;
+$bp-columns: 880;
+$bp-typography: 900;
+$bp-menu: 920;
+
+// color variables
+$dark: #191919;
+$grey: #424242;
+$light-grey: #DFE2DB;
+$white: #fff;
+$yellow: #FFF056;
+$purple: #8A0651;
+
+// fonts
+$body-font: 'Source Sans Pro', sans-serif;
+$heading-font: 'Josefin Slab', serif;
+
+// icons
+$icon-edit: "\e904";
+$icon-plus: "\e114";
+$icon-delete: "\e117";
+$icon-check: "\e116";
+$icon-menu: "\e120";
+$icon-external: "\e128";
+$icon-left: "\e901";
+$icon-right: "\e902";
+$icon-up: "\e903";
+$icon-down: "\e900";
+
+$icon-github: "\eab0";
+$icon-codepen: "\eae8";
+$icon-twitter: "\ea96";
+$icon-instagram: "\ea92";

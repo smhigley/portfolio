@@ -1,0 +1,266 @@
+.page-header {
+  margin-bottom: em-calc(50);
+}
+
+.site-title {
+  margin: 0 0 em-calc(40);
+
+  h1 {
+    margin-bottom: 0;
+  }
+  a {
+    color: $dark;
+  }
+  .tagline {
+    display: inline-block;
+    border-top: 5px solid $dark;
+    padding: em-calc(10) 0;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+}
+
+.main-menu {
+
+  .menu {
+    padding: em-calc(8) 0;
+  }
+
+  a {
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  li {
+    position: relative;
+    display: inline-block;
+    padding-right: em-calc(20);
+
+    &:after {
+      content: "";
+      position: absolute;
+      right: 6px;
+      top: 50%;
+      width: 4px;
+      height: 4px;
+      margin-top: -2px;
+      background-color: $dark;
+    }
+  }
+}
+
+// admin bar
+.admin-bar {
+  margin: em-calc(-20) 0 em-calc(50);
+  text-align: center;
+
+  a {
+    vertical-align: middle;
+    margin: 0 2px 4px;
+    padding: em-calc(4) em-calc(16);
+
+    &:before {
+      @extend .icon;
+      display: inline-block;
+      margin: 0 6px 0 -6px;
+      vertical-align: top;
+      font-size: 20px;
+      color: $dark;
+    }
+
+    &:focus:before, &:hover:before {
+      color: #fff;
+    }
+  }
+
+  .edit:before {
+    content: $icon-edit;
+  }
+  .new:before {
+    content: $icon-plus;
+  }
+  .delete:before {
+    content: $icon-delete;
+  }
+}
+
+// sidebar
+.sidebar {
+  .featured-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+}
+
+// forms
+.input-group {
+  margin: 0 0 em-calc(30);
+  @include clearfix;
+
+  &.error {
+    input, textarea {
+      border-color: $purple;
+    }
+  }
+}
+
+label {
+  display: block;
+  margin: 0 0 em-calc(10);
+  font-weight: bold;
+}
+
+input[type=text], input[type=email], input[type=search], input[type=tel], input[type=url], input[type=number], input[type=password], textarea {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  padding: em-calc(10) em-calc(14);
+  border: 3px solid $grey;
+  @include transition(border 0.3s ease);
+  &:focus {
+    outline: none;
+    border-color: $yellow;
+  }
+}
+
+.button, button[type=submit] {
+  position: relative;
+  display: inline-block;
+  padding: em-calc(10) em-calc(40);
+  margin: 6px;
+  border: 0;
+  outline: none;
+  background: $purple;
+  color: #fff;
+  font-family: $heading-font;
+  text-transform: uppercase;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: -6px;
+    left: -6px;
+    right: -6px;
+    bottom: -6px;
+    border: 4px solid $purple;
+    @include transform(scale(0.8, 0.7));
+    @include opacity(1);
+    @include transition(all 0.4s ease);
+  }
+
+  &:hover {
+    background-color: $yellow;
+  }
+
+  &:hover:before {
+    @include transform(scale(1, 1));
+    @include opacity(1);
+  }
+
+  &:focus:before {
+    @include transform(scale(1.15, 1.24));
+    @include opacity(0);
+  }
+}
+
+.error-msg {
+  display: block;
+  margin-top: 6px;
+  color: $purple;
+  font-size: 0.95em;
+  font-style: italic;
+}
+
+.meta {
+  margin: 0 0 em-calc(20);
+  color: darken($grey, 30%);
+  font-style: italic;
+  text-align: center;
+
+  .author {
+    padding-right: em-calc(6);
+  }
+  .date {
+    padding-left: em-calc(6);
+  }
+}
+
+// pagination
+.pagination {
+  margin-top: em-calc(-20);
+  text-align: center;
+
+  li {
+    display: inline-block;
+    margin: 0 em-calc(2);
+    vertical-align: middle;
+  }
+
+  a {
+    display: block;
+    padding: em-calc(2) em-calc(8);
+    border: 1px solid darken($light-grey, 10%);
+    background-color: $light-grey;
+    color: $dark;
+    @include border-radius(5px);
+    @include transition(all 0.3s ease);
+
+    &:hover, &:focus {
+      background-color: $purple;
+      border-color: $purple;
+      color: #fff;
+      &:before {
+        color: #fff;
+      }
+    }
+  }
+
+  span {
+    display: block;
+    padding: em-calc(6);
+    font-weight: bold;
+  }
+
+  .next, .prev {
+    font-size: 0;
+    line-height: 0;
+    padding: 2px 0;
+    &:before {
+      @extend .icon;
+      font-size: 25px;
+      line-height: 25px;
+      color: $dark;
+    }
+  }
+
+  .prev:before {
+    content: $icon-left;
+  }
+  .next:before {
+    content: $icon-right;
+  }
+}
+
+// flash messages
+.alerts {
+  margin: 0 0 em-calc(30);
+
+  li {
+    display: block;
+    padding: em-calc(10) em-calc(20);
+    background-color: lighten($yellow, 20%);
+    border: 1px solid $yellow;
+    color: $grey;
+    font-weight: bold;
+    text-align: center;
+    @include border-radius(6px);
+  }
+}

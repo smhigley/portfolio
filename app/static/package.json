@@ -1,0 +1,24 @@
+{
+  "name": "TheLongTrip",
+  "version": "1.0.0",
+  "description": "A travel blog made with Flask",
+  "homepage": "http://thelongtrip.org",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "latest",
+    "gulp-ruby-sass": "latest",
+    "gulp-concat": "latest",
+    "gulp-uglify": "latest",
+    "gulp-minify-css": "latest",
+    "gulp-jshint": "latest",
+    "jshint-stylish": "latest",
+    "gulp-rename": "latest",
+    "gulp-size": "latest",
+    "gulp-sourcemaps": "latest"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "Sarah Higley"
+}
