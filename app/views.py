@@ -50,8 +50,8 @@ def logout():
     logout_user()
     return redirect(url_for('index'))
 
-#Need to update this
-@app.route('/create-new-user', methods=['GET', 'POST'])
+# un-comment to allow creation of new users
+# @app.route('/create-new-user', methods=['GET', 'POST'])
 def create_user():
   form = LoginForm()
   next_url = request.args.get('next') or url_for('index')
@@ -66,9 +66,10 @@ def create_user():
       db.session.add(user)
       db.session.commit()
       login_user(user, True)
+      flash(u'New user %s created' % username)
       return redirect(url_for('index'))
     else:
-      flash(u'The username %s already exists' % form.username.data)
+      flash(u'The username %s already exists' % username)
 
   return render_template("login.html", form=form, title='Create New User')
 
