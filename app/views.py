@@ -137,5 +137,44 @@ def delete_page(slug):
   flash('"%s" has been deleted' % title)
   return redirect(url_for('index'))
 
+# Portfolio
+@app.route('/portfolio')
+def portfolio(page=1):
+  projects = Project.query.order_by(Project.timestamp.desc()) #.paginate(project, POSTS_PER_PAGE, True)
+  return render_template('portfolio.html', title='Portfolio', projects=projects)
+
+@app.route('/portfolio/<slug>')
+def project(slug):
+  project = Project.query.filter_by(slug=slug).first()
+  if project is None:
+    flash('The URL "/portfolio/%s" was not found' % slug)
+    return redirect(url_for('portfolio'))
+  return render_template('project.html', title=project.title, project=project)
+
+@app.route('/portfolio/new', methods=['GET', 'POST'])
+@login_required
+def add_project():
+  form = ProjectForm()
+
+  if g.user is None or not g.user.is_authenticated:
+    return redirect(url_for('login'))
+
+  if form.validate_on_submit():
+    flash('Project created: %s' % form.title.data)
+    project = Project(
+      title=form.title.data,
+      slug=form.slug.data,
+      image=form.image.data,
+      link=form.link.data,
+      client=form.client.data,
+      body=form.body.data,
+      featured=form.featured.data,
+      timestamp=datetime.now())
+    db.session.add(project)
+    db.session.commit()
+    return redirect(url_for('project', slug=form.slug.data))
+
+  return render_template('project_add_edit.html', form=form, action='Create', title='New Project')
+
 
 

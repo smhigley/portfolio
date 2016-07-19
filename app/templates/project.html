@@ -1,8 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>{{ page.title }}</h1>
-  {{ page.body|safe }}
+  <h1>{{ project.title }}</h1>
+  {% if project.image: %}
+    <img src="{{ project.image }}" class="featured-image" alt="Featured Image">
+  {% endif %}
+  {{ project.body|safe }}
 {% endblock %}
 
 {% block adminbar %}

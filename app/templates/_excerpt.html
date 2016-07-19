@@ -1,12 +1,11 @@
 <article class="excerpt">
-  <h3><a href="{{ url_for('post', slug=post.slug) }}">{{ post.title }}</a></h3>
-  {% if post.image: %}
-    <img src="{{ post.get_thumbnail() }}" class="featured-thumb" alt="Featured Image">
+  <h3><a href="{{ url_for('portfolio', slug=project.slug) }}">{{ project.title }}</a></h3>
+  {% if project.image: %}
+    <img src="{{ project.get_thumbnail() }}" class="featured-thumb" alt="Featured Image">
   {% endif %}
   <div class="meta">
-    <span class="author">{{ post.author.nickname }}</span> &bull;
-    <span class="date">{{ post.timestamp.strftime('%B %-d, %Y') }}</span>
+    <span class="date">{{ project.timestamp.strftime('%B %-d, %Y') }}</span>
   </div>
-  <p>{{ post.body|striptags|truncate(300) }}</p>
-  <a href="{{ url_for('post', slug=post.slug) }}" class="simple-button">View Full Post</a>
+  <p>{{ project.body|striptags|truncate(300) }}</p>
+  <a href="{{ url_for('project', slug=project.slug) }}" class="simple-button">View Full Project</a>
 </article>

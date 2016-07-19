@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>{{ action }} Project</h1>
+  <form action="" method="post" name="login">
+    {{ form.hidden_tag() }}
+
+    <div class="input-group {% if form.title.errors %}error{% endif %}">
+      <label>Project Title</label>
+      {{ form.title() }}
+      {% for error in form.title.errors %}
+        <div class="error-msg">{{ error }}</div>
+      {% endfor %}
+    </div>
+
+    <div class="input-group {% if form.slug.errors %}error{% endif %}">
+      <label>Slug (must contain only letters, numbers, and dashes)</label>
+      {{ form.slug() }}
+      {% for error in form.slug.errors %}
+        <div class="error-msg">{{ error }}</div>
+      {% endfor %}
+    </div>
+
+    <div class="input-group {% if form.image.errors %}error{% endif %}">
+      <label>Image URL</label>
+      {{ form.image() }}
+      {% for error in form.image.errors %}
+        <div class="error-msg">{{ error }}</div>
+      {% endfor %}
+    </div>
+
+    <div class="input-group {% if form.link.errors %}error{% endif %}">
+      <label>External Link</label>
+      {{ form.link() }}
+      {% for error in form.link.errors %}
+        <div class="error-msg">{{ error }}</div>
+      {% endfor %}
+    </div>
+
+    <div class="input-group {% if form.client.errors %}error{% endif %}">
+      <label>Client Name (if applicable)</label>
+      {{ form.client() }}
+      {% for error in form.client.errors %}
+        <div class="error-msg">{{ error }}</div>
+      {% endfor %}
+    </div>
+
+    <div class="input-group {% if form.body.errors %}error{% endif %}">
+      <label>Body</label>
+      {{ form.body(rows=8, cols=20) }}
+      {% for error in form.body.errors %}
+        <div class="error-msg">{{ error }}</div>
+      {% endfor %}
+    </div>
+
+    <div class="input-group {% if form.featured.errors %}error{% endif %}">
+      <label>Feature this project</label>
+      {{ form.featured() }}
+      {% for error in form.featured.errors %}
+        <div class="error-msg">{{ error }}</div>
+      {% endfor %}
+    </div>
+
+    <button type="submit">{{ action }} Project</button>
+  </form>
+{% endblock %}
