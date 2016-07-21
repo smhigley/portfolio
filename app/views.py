@@ -140,7 +140,7 @@ def delete_page(slug):
 # Portfolio
 @app.route('/portfolio')
 def portfolio(page=1):
-  projects = Project.query.order_by(Project.timestamp.desc()) #.paginate(project, POSTS_PER_PAGE, True)
+  projects = Project.query.order_by(Project.timestamp.desc()) # add later: .paginate(project, POSTS_PER_PAGE, True)
   return render_template('portfolio.html', title='Portfolio', projects=projects)
 
 @app.route('/portfolio/<slug>')
@@ -202,6 +202,20 @@ def edit_project(slug):
     return redirect(url_for('project', slug=form.slug.data))
 
   return render_template('project_add_edit.html', form=form, action='Edit', title='Edit Project')
+
+@app.route('/portfolio/<slug>/delete')
+@login_required
+def delete_project(slug):
+  project = Project.query.filter_by(slug=slug).first()
+  title = project.title
+  if project is None:
+    flash('Project not found.')
+    return redirect(url_for('portfolio'))
+
+  db.session.delete(project)
+  db.session.commit()
+  flash('"%s" has been deleted' % title)
+  return redirect(url_for('log'))
 
 
 

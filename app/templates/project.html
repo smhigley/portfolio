@@ -2,14 +2,31 @@
 
 {% block content %}
   <h1>{{ project.title }}</h1>
+  <div class="project-meta">
+    <ul class="menu tags">
+      {% for tag in project.tokenize_tags() %}
+        <li>{{ tag }}</li>
+      {% endfor %}
+    </ul>
+    <a href="{{ project.link }}" class="project-url">See it here</a>
+  </div>
+
   {% if project.image: %}
     <img src="{{ project.image }}" class="featured-image" alt="Featured Image">
   {% endif %}
+  <div class="project-type">
+    {% if project.client: %}
+      Client: {{ project.client }}
+    {% else: %}
+      Personal
+    {% endif %}
+  </div>
+
   {{ project.body|safe }}
 {% endblock %}
 
 {% block adminbar %}
-  <a href="{{ url_for('edit_page', slug=page.slug) }}" class="simple-button edit">Edit</a>
-  <a href="{{ url_for('delete_page', slug=page.slug) }}" class="simple-button delete">Delete</a>
+  <a href="{{ url_for('edit_project', slug=project.slug) }}" class="simple-button edit">Edit</a>
+  <a href="{{ url_for('delete_project', slug=project.slug) }}" class="simple-button delete">Delete</a>
   {% include '_adminbar.html' %}
 {% endblock %}

@@ -15,7 +15,7 @@
     {%- for page in projects.iter_pages() %}
       {% if page %}
         {% if page != projects.page %}
-          <li><a href="{{ url_for('log', page=page) }}">{{ page }}</a></li>
+          <li><a href="{{ url_for('portfolio', page=page) }}">{{ page }}</a></li>
         {% else %}
           <li><span>{{ page }}</span></li>
         {% endif %}
@@ -24,7 +24,7 @@
       {% endif %}
     {%- endfor %}
     {% if projects.has_next %}
-      <li><a href="{{ url_for('log', page=projects.next_num) }}" class="next">Next page</a></li>
+      <li><a href="{{ url_for('portfolio', page=projects.next_num) }}" class="next">Next page</a></li>
     {% endif %}
   </ul>
   {% endif %}

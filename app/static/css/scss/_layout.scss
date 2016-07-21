@@ -45,14 +45,14 @@ html {
 .container {
   width: 100%;
   overflow: hidden;
-  padding: em-calc(50) em-calc(20);
+  padding: em-calc(50) em-calc(20) em-calc(20);
   @include bp($bp-layout) {
     width: 66.6666%;
-    padding: em-calc(80) em-calc(30);
+    padding: em-calc(80) em-calc(30) em-calc(30);
   }
   @include bp(1300) {
     width: 860px;
-    padding: em-calc(80) em-calc(46);
+    padding: em-calc(80) em-calc(46) em-calc(30);
   }
 }
 

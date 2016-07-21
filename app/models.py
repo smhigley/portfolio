@@ -44,6 +44,10 @@ class Project(db.Model):
   featured = db.Column(db.Boolean)
   timestamp = db.Column(db.DateTime)
 
+  def tokenize_tags(self):
+    tags_list = self.tags.split(", ")
+    return tags_list
+
   def __repr__(self):
     return '<Project %r>' % (self.title)
 

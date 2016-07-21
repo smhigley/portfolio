@@ -37,15 +37,16 @@
   <script src="/static/js/modernizr.custom.js"></script>
 </head>
 <body>
-  <div class="sidebar">
-    Illustration/falling leaves block
+  <div class="sidebar falling-leaves">
+    <div class="leaf"></div>
+    <div class="leaf2"></div>
   </div><!-- /.sidebar -->
 
   <div class="container">
 
     <header class="page-header" role="banner">
       <div class="site-title">
-        <h1><a href="/">Sarah Higley</a></h1>
+        <a href="/">Sarah Higley</a>
         <span class="tagline">Coder by day, still coding by night</span>
       </div>
       <nav class="main-menu" role="navigation">
@@ -70,6 +71,12 @@
           </ul>
         {% endif %}
       {% endwith %}
+
+      {% if g.user.is_authenticated() %}
+      <div class="admin-bar">
+        {% block adminbar %}{% endblock %}
+      </div>
+      {% endif %}
 
       {% block content %}{% endblock %}
     </div>
