@@ -116,35 +116,34 @@
 
 // sidebar
 .sidebar {
-  // monochrome leaf
-  .leaf {
+  overflow: hidden;
+
+  .leaf-scene {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 80px;
-    height: 80px;
-    background-color: $purple;
-    @include border-radius(60% 0 60% 0);
-  }
-  // two-tone leaf
-  .leaf2 {
-    position: absolute;
-    top: 10%;
-    left: 10%;
-    width: 80px;
-    height: 80px;
-    overflow: hidden;
-    @include border-radius(60% 0 60% 0);
-    &:before {
-      content: "";
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -o-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+
+    div {
       position: absolute;
       top: 0;
       left: 0;
-      width: 0;
-      height: 0;
-      border: 40px solid $purple;
-      border-top-color: lighten($purple, 30%);
-      border-left-color: lighten($purple, 30%);
+      width: 40px;
+      height: 20px;
+      background: url(../images/leaf.svg) no-repeat center;
+      background-size: 100% 100%;
+      -webkit-transform-style: preserve-3d;
+      -moz-transform-style: preserve-3d;
+      -o-transform-style: preserve-3d;
+      transform-style: preserve-3d;
+      -webkit-backface-visibility: visible;
+      -moz-backface-visibility: visible;
+      backface-visibility: visible;
     }
   }
 }

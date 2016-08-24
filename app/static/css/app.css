@@ -785,36 +785,33 @@ hr {
   .admin-bar .delete:before {
     content: ""; }
 
-.sidebar .leaf {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 80px;
-  height: 80px;
-  background-color: #8A0651;
-  -webkit-border-radius: 60% 0 60% 0;
-  -moz-border-radius: 60% 0 60% 0;
-  border-radius: 60% 0 60% 0; }
-.sidebar .leaf2 {
-  position: absolute;
-  top: 10%;
-  left: 10%;
-  width: 80px;
-  height: 80px;
-  overflow: hidden;
-  -webkit-border-radius: 60% 0 60% 0;
-  -moz-border-radius: 60% 0 60% 0;
-  border-radius: 60% 0 60% 0; }
-  .sidebar .leaf2:before {
-    content: "";
+.sidebar {
+  overflow: hidden; }
+  .sidebar .leaf-scene {
     position: absolute;
     top: 0;
     left: 0;
-    width: 0;
-    height: 0;
-    border: 40px solid #8A0651;
-    border-top-color: #ad5085;
-    border-left-color: #ad5085; }
+    bottom: 0;
+    width: 100%;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -o-transform-style: preserve-3d;
+    transform-style: preserve-3d; }
+    .sidebar .leaf-scene div {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 40px;
+      height: 20px;
+      background: url(../images/leaf.svg) no-repeat center;
+      background-size: 100% 100%;
+      -webkit-transform-style: preserve-3d;
+      -moz-transform-style: preserve-3d;
+      -o-transform-style: preserve-3d;
+      transform-style: preserve-3d;
+      -webkit-backface-visibility: visible;
+      -moz-backface-visibility: visible;
+      backface-visibility: visible; }
 
 .page-footer {
   margin-top: 3.75em; }
