@@ -56,7 +56,7 @@
       numLeaves: 20,
       wind: {
         magnitude: 1.2,
-        maxSpeed: 8,
+        maxSpeed: 12,
         duration: 300,
         start: 0,
         speed: 0
@@ -84,7 +84,8 @@
         leaf.y = Math.random()*this.height;
       }
 
-      // rotate around the y or z axis
+      // Choose axis of rotation.
+      // If axis is not X, chose a random static x-rotation for greater variability
       leaf.rotation.speed = Math.random()*10;
       var randomAxis = Math.random();
       if (randomAxis > 0.5) {
@@ -114,8 +115,6 @@
       leaf.y += leaf.ySpeed;
       leaf.rotation.value += leaf.rotation.speed;
 
-      console.log("y:", leaf.y, "wind:", leafWindSpeed);
-
       var t = 'translateX( ' + leaf.x + 'px ) translateY( ' + leaf.y + 'px ) translateZ( ' + leaf.z + 'px )  rotate' + leaf.rotation.axis + '( ' + leaf.rotation.value + 'deg )';
       if (leaf.rotation.axis !== 'X') {
         t += ' rotateX(' + leaf.rotation.x + 'deg)';
@@ -134,12 +133,14 @@
     this._updateWind = function() {
       // wind follows a sine curve: asin(b*time + c) + a
       // where a = wind magnitude as a function of leaf position, b = wind.duration, c = offset
+      // wind duration should be related to wind magnitude, e.g. higher windspeed means longer gust duration
 
       if (this.timer === 0 || this.timer > (this.options.wind.start + this.options.wind.duration)) {
 
         this.options.wind.magnitude = Math.random() * this.options.wind.maxSpeed;
-        this.options.wind.duration = Math.random() * 300 + 100 // random gust duration between 100 and 400
+        this.options.wind.duration = this.options.wind.magnitude * 50 + (Math.random() * 20 - 10);
         this.options.wind.start = this.timer;
+        console.log('speed:', this.options.wind.magnitude, 'duration:', this.options.wind.duration);
 
         var screenHeight = this.height;
 
@@ -191,7 +192,6 @@
 
   LeafScene.prototype.render = function() {
     this._updateWind();
-    console.log("FRAME START");
     for (var i = 0; i < this.leaves.length; i++) {
       this._updateLeaf(this.leaves[i]);
     }
