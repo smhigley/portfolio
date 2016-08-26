@@ -72,6 +72,7 @@ h2 {
   font-size: 26px;
   font-weight: bold;
   line-height: 1.15;
+  color: $purple;
   @include bp($bp-typography) {
     font-size: 34px;
     line-height: 1.25;
@@ -81,7 +82,8 @@ h2 {
 h3 {
   font-size: 22px;
   line-height: 1.15;
-  font-weight: bold;
+  font-weight: normal;
+  text-transform: uppercase;
   @include bp($bp-typography) {
     font-size: 24px;
     line-height: 1.25;
@@ -91,18 +93,16 @@ h3 {
 h4 {
   font-size: 18px;
   line-height: 1.2;
-  font-weight: normal;
-  text-transform: uppercase;
+  font-weight: bold;
   @include bp($bp-typography) {
-    font-size: 24px;
+    font-size: 22px;
     line-height: 1.25;
   }
 }
 
 h5, h6 {
-  font-size: 18px;
+  font-size: 17px;
   font-weight: bold;
-  text-align: left;
 }
 
 p, ul, ol, pre {
@@ -115,11 +115,54 @@ p, ul, ol, pre {
   p, ul, ol {
     font-size: 18px;
   }
+
+  ul, ol {
+    padding-left: em-calc(12);
+    list-style-type: none;
+  }
+
+  li {
+    position: relative;
+    padding-left: em-calc(20);
+    margin-bottom: em-calc(8);
+
+    &:before {
+      position: absolute;
+      left: 0;
+    }
+  }
+
+  ul li:before {
+    content: "";
+    top: 8px;
+    width: 10px;
+    height: 10px;
+    @include border-radius(60% 0 60% 0);
+    background-color: $purple;
+  }
+
+  ol {
+    counter-reset: ol-numbers;
+    li:before {
+      content: counter(ol-numbers) ".";
+      counter-increment: ol-numbers;
+      top: 0px;
+      color: $purple;
+      font-family: $heading-font;
+      font-size: 20px;
+    }
+  }
+
+  .menu {
+    padding: 0;
+    li {
+      &:before {
+        display: none;
+      }
+    }
+  }
 }
 
-li {
-  margin-bottom: em-calc(8);
-}
 
 blockquote {
   padding: em-calc(8, 18) 0 em-calc(8, 18) em-calc(20, 18);
@@ -128,6 +171,8 @@ blockquote {
   font-size: 18px;
   font-weight: normal;
   font-style: italic;
+  line-height: 1.4;
+  color: $grey;
 
   p {
     font-size: 18px;

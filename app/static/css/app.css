@@ -525,7 +525,8 @@ h1 {
 h2 {
   font-size: 26px;
   font-weight: bold;
-  line-height: 1.15; }
+  line-height: 1.15;
+  color: #8A0651; }
   @media only screen and (min-width: 56.25em) {
     h2 {
       font-size: 34px;
@@ -534,7 +535,8 @@ h2 {
 h3 {
   font-size: 22px;
   line-height: 1.15;
-  font-weight: bold; }
+  font-weight: normal;
+  text-transform: uppercase; }
   @media only screen and (min-width: 56.25em) {
     h3 {
       font-size: 24px;
@@ -543,17 +545,15 @@ h3 {
 h4 {
   font-size: 18px;
   line-height: 1.2;
-  font-weight: normal;
-  text-transform: uppercase; }
+  font-weight: bold; }
   @media only screen and (min-width: 56.25em) {
     h4 {
-      font-size: 24px;
+      font-size: 22px;
       line-height: 1.25; } }
 
 h5, h6 {
-  font-size: 18px;
-  font-weight: bold;
-  text-align: left; }
+  font-size: 17px;
+  font-weight: bold; }
 
 p, ul, ol, pre {
   margin: 0 0 1.11111em;
@@ -562,9 +562,38 @@ p, ul, ol, pre {
 
 .content p, .content ul, .content ol {
   font-size: 18px; }
-
-li {
+.content ul, .content ol {
+  padding-left: 0.75em;
+  list-style-type: none; }
+.content li {
+  position: relative;
+  padding-left: 1.25em;
   margin-bottom: 0.5em; }
+  .content li:before {
+    position: absolute;
+    left: 0; }
+.content ul li:before {
+  content: "";
+  top: 8px;
+  width: 10px;
+  height: 10px;
+  -webkit-border-radius: 60% 0 60% 0;
+  -moz-border-radius: 60% 0 60% 0;
+  border-radius: 60% 0 60% 0;
+  background-color: #8A0651; }
+.content ol {
+  counter-reset: ol-numbers; }
+  .content ol li:before {
+    content: counter(ol-numbers) ".";
+    counter-increment: ol-numbers;
+    top: 0px;
+    color: #8A0651;
+    font-family: "Josefin Slab", serif;
+    font-size: 20px; }
+.content .menu {
+  padding: 0; }
+  .content .menu li:before {
+    display: none; }
 
 blockquote {
   padding: 0.44444em 0 0.44444em 1.11111em;
@@ -572,7 +601,9 @@ blockquote {
   margin: 0 0 1.66667em;
   font-size: 18px;
   font-weight: normal;
-  font-style: italic; }
+  font-style: italic;
+  line-height: 1.4;
+  color: #5c5c5c; }
   blockquote p {
     font-size: 18px;
     font-weight: normal;
