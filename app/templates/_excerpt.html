@@ -3,9 +3,13 @@
   {% if project.image: %}
     <img src="{{ project.image }}" class="featured-thumb" alt="Featured Image">
   {% endif %}
-  <div class="meta">
-    <span class="date">{{ project.timestamp.strftime('%B %-d, %Y') }}</span>
+  <div class="project-meta">
+    <ul class="menu tags">
+      {% for tag in project.tokenize_tags() %}
+        <li>{{ tag }}</li>
+      {% endfor %}
+    </ul>
   </div>
-  <p>{{ project.body|striptags|truncate(300) }}</p>
+  <p>{{ project.body|striptags|truncate(100) }}</p>
   <a href="{{ url_for('project', slug=project.slug) }}" class="simple-button">View Full Project</a>
 </article>

@@ -8,7 +8,9 @@
         <li>{{ tag }}</li>
       {% endfor %}
     </ul>
-    <a href="{{ project.link }}" class="project-url">See it here</a>
+    {% if project.link: %}
+      <a href="{{ project.link }}" class="project-url">See it here</a>
+    {% endif %}
   </div>
 
   {% if project.image: %}

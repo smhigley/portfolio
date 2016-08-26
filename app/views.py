@@ -140,8 +140,15 @@ def delete_page(slug):
 # Portfolio
 @app.route('/portfolio')
 def portfolio(page=1):
-  projects = Project.query.order_by(Project.timestamp.desc()) # add later: .paginate(project, POSTS_PER_PAGE, True)
-  return render_template('portfolio.html', title='Portfolio', projects=projects)
+  all_projects = Project.query.order_by(Project.timestamp.desc())
+  featured = all_projects.filter(Project.featured == True).limit(3)
+
+  exclude_ids = []
+  for project in featured:
+    exclude_ids.append(project.id)
+  projects = all_projects.filter(Project.id.notin_(exclude_ids))
+
+  return render_template('portfolio.html', title='Portfolio', projects=projects, featured=featured)
 
 @app.route('/portfolio/<slug>')
 def project(slug):

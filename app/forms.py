@@ -13,7 +13,7 @@ class PageForm(Form):
 class ProjectForm(Form):
   title = StringField('title', validators=[validators.DataRequired()])
   slug = StringField('slug', validators=[validators.DataRequired(), validators.Regexp('[\w-]+$', message="The slug must contain only letters, numbers, and dashes")])
-  link = StringField('external link', validators=[validators.DataRequired()])
+  link = StringField('external link')
   body = TextAreaField('body', validators=[validators.DataRequired()])
   image = StringField('image')
   client = StringField('client (optional)')

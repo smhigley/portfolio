@@ -3,6 +3,12 @@
 {% block content %}
   <h1>{{ title }}</h1>
 
+  <div class="featured">
+    {% for project in featured %}
+    <div class="featured-{{ loop.index }}">{% include '_excerpt.html' %}</div>
+    {% endfor %}
+  </div>
+
   {% for project in projects %}
     {% include '_excerpt.html' %}
   {% endfor %}
@@ -12,7 +18,7 @@
     {% if projects.has_prev %}
       <li><a href="{{ url_for('log', page=projects.prev_num) }}" class="prev">Previous page</a></li>
     {% endif %}
-    {%- for page in projects.iter_pages() %}
+    {% for page in projects.iter_pages() %}
       {% if page %}
         {% if page != projects.page %}
           <li><a href="{{ url_for('portfolio', page=page) }}">{{ page }}</a></li>
@@ -22,7 +28,7 @@
       {% else %}
         <span class=ellipsis>…</span>
       {% endif %}
-    {%- endfor %}
+    {% endfor %}
     {% if projects.has_next %}
       <li><a href="{{ url_for('portfolio', page=projects.next_num) }}" class="next">Next page</a></li>
     {% endif %}
