@@ -290,15 +290,136 @@ input[type=text], input[type=email], input[type=search], input[type=tel], input[
 }
 
 // list of projects
-.excerpt {
+$bp-projects-medium: 1080;
+.projects {
+  margin: 0 -4px;
+  font-size: 0;
+
+  .excerpt {
+    display: inline-block;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 em-calc(4);
+    margin-bottom: em-calc(10);
+    vertical-align: top;
+    font-size: 16px;
+
+    @include bp($bp-projects-medium) {
+      width: 50%;
+    }
+  }
 }
 
-.featured-thumb {
-  //
+.hover-group {
+  position: relative;
+  height: 190px;
+  margin-bottom: em-calc(4);
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: $purple;
+  overflow: hidden;
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba($purple, 0.5);
+    @include transition(background 0.3s ease);
+  }
+
+  @include bp($bp-projects-medium) {
+    padding-bottom: 56.25%;
+    height: 0;
+  }
+
+  &:hover {
+    &:after {
+      background-color: rgba($purple, 0.9);
+    }
+
+    h3 {
+      @include transform(translate(0, -100%));
+    }
+    p {
+      @include opacity(1);
+      @include transform(translate(0, 0));
+    }
+  }
+
+  img {
+    display: block;
+    margin: 0 auto;
+  }
+
+  a {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-indent: -200%;
+    z-index: 2;
+    overflow: hidden;
+  }
+
+  h3 {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    padding: 0 12px;
+    color: $white;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 1;
+    text-align: center;
+    z-index: 1;
+    @include transform(translate(0, -50%));
+    @include transition(all 0.3s ease);
+  }
+
+  p {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    padding: em-calc(10, 24) em-calc(36, 24) 0;
+    color: $white;
+    font-size: 18px;
+    font-style: italic;
+    line-height: 1.2;
+    text-align: center;
+    z-index: 1;
+    @include opacity(0);
+    @include transform(translate(0, 120%));
+    @include transition(all 0.3s ease);
+  }
+}
+
+.featured {
+  .hover-group {
+    padding-bottom: 56.25%;
+    height: 0;
+  }
+
+  h3 {
+    @include bp($bp-typography) {
+      font-size: 42px;
+    }
+  }
+
+  p {
+    @include bp($bp-typography) {
+      font-size: 20px;
+      line-height: 1.6;
+    }
+  }
 }
 
 // projects
-
 .project-meta {
   margin: 0 0 em-calc(20);
   color: darken($grey, 30%);

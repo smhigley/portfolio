@@ -1,8 +1,9 @@
 <article class="excerpt">
-  <h3><a href="{{ url_for('project', slug=project.slug) }}">{{ project.title }}</a></h3>
-  {% if project.image: %}
-    <img src="{{ project.image }}" class="featured-thumb" alt="Featured Image">
-  {% endif %}
+  <div class="hover-group" style="background-image:url({{ project.image }})">
+    <h3>{{ project.title }}</h3>
+    <p>{{ project.body|striptags|truncate(100) }}</p>
+    <a href="{{ url_for('project', slug=project.slug) }}">View Project</a>
+  </div>
   <div class="project-meta">
     <ul class="menu tags">
       {% for tag in project.tokenize_tags() %}
@@ -10,6 +11,4 @@
       {% endfor %}
     </ul>
   </div>
-  <p>{{ project.body|striptags|truncate(100) }}</p>
-  <a href="{{ url_for('project', slug=project.slug) }}" class="simple-button">View Full Project</a>
 </article>

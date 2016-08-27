@@ -9,9 +9,11 @@
     {% endfor %}
   </div>
 
+  <div class="projects">
   {% for project in projects %}
     {% include '_excerpt.html' %}
   {% endfor %}
+  </div>
 
   {% if projects.has_prev or projects.has_next %}
   <ul class="pagination menu">

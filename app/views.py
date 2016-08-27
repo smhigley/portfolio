@@ -18,7 +18,8 @@ def load_user(id):
 @app.route('/index')
 @app.route('/page/<int:page>')
 def index(page=1):
-  return render_template('index.html', title='Home')
+  projects = all_projects.filter(Project.featured == True).limit(3)
+  return render_template('index.html', title='Home', projects=projects)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -141,7 +142,7 @@ def delete_page(slug):
 @app.route('/portfolio')
 def portfolio(page=1):
   all_projects = Project.query.order_by(Project.timestamp.desc())
-  featured = all_projects.filter(Project.featured == True).limit(3)
+  featured = all_projects.filter(Project.featured == True).limit(2)
 
   exclude_ids = []
   for project in featured:
@@ -203,7 +204,6 @@ def edit_project(slug):
     project.tags=form.tags.data
     project.body=form.body.data
     project.featured=form.featured.data
-    project.timestamp=datetime.now()
     db.session.add(project)
     db.session.commit()
     return redirect(url_for('project', slug=form.slug.data))
