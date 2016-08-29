@@ -982,6 +982,8 @@ input[type=text], input[type=email], input[type=search], input[type=tel], input[
     @media only screen and (min-width: 67.5em) {
       .projects .excerpt {
         width: 50%; } }
+  .projects .project-meta {
+    margin: 0; }
 
 .hover-group {
   position: relative;
@@ -1084,6 +1086,8 @@ input[type=text], input[type=email], input[type=search], input[type=tel], input[
     -o-transition: all 0.3s ease;
     transition: all 0.3s ease; }
 
+.featured .excerpt {
+  margin-bottom: 1.875em; }
 .featured .hover-group {
   padding-bottom: 56.25%;
   height: 0; }

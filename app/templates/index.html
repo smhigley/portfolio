@@ -4,6 +4,17 @@
   <h1>Empty Portfolio Project</h1>
   <p>I should probably have some sort of description here, then list some projects</p>
 
+  <div class="featured">
+    {% for project in projects %}
+      {% include '_excerpt.html' %}
+      {% if loop.index == 1 %}
+  </div>
+  <div class="projects">
+      {% endif %}
+    {% endfor %}
+  </div>
+
+
 {% endblock %}
 
 {% block adminbar %}

@@ -18,7 +18,7 @@ def load_user(id):
 @app.route('/index')
 @app.route('/page/<int:page>')
 def index(page=1):
-  projects = all_projects.filter(Project.featured == True).limit(3)
+  projects = Project.query.filter(Project.featured == True).order_by(Project.timestamp.desc()).limit(3)
   return render_template('index.html', title='Home', projects=projects)
 
 @app.route('/login', methods=['GET', 'POST'])

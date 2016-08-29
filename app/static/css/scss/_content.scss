@@ -308,6 +308,10 @@ $bp-projects-medium: 1080;
       width: 50%;
     }
   }
+
+  .project-meta {
+    margin: 0;
+  }
 }
 
 .hover-group {
@@ -400,6 +404,10 @@ $bp-projects-medium: 1080;
 }
 
 .featured {
+  .excerpt {
+    margin-bottom: em-calc(30);
+  }
+
   .hover-group {
     padding-bottom: 56.25%;
     height: 0;
