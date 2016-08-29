@@ -494,7 +494,8 @@ body {
   text-align: center; }
 
 a {
-  color: #8A0651;
+  color: #900052;
+  font-weight: bold;
   text-decoration: none; }
   a, a:before, a:after {
     -webkit-transition: background 0.25s ease, color 0.25s ease;
@@ -667,7 +668,7 @@ hr {
   border: none;
   border-top: 4px solid #191919; }
 
-.icon, .admin-bar a:before, .socials a:before, .project-url:after, .pagination .next:before, .pagination .prev:before {
+.icon, .admin-bar a:before, .socials a:after, .socials a span:after, .project-url:after, .pagination .next:before, .pagination .prev:before {
   font-family: 'icomoon';
   speak: none;
   font-style: normal;
@@ -829,56 +830,78 @@ hr {
     padding: 8px;
     font-size: 0;
     line-height: 0; }
-    .socials a:before {
-      position: relative;
-      font-size: 36px;
-      line-height: 1;
-      color: #191919;
-      z-index: 1;
-      -webkit-transition: color 0.3s ease;
-      -moz-transition: color 0.3s ease;
-      -ms-transition: color 0.3s ease;
-      -o-transition: color 0.3s ease;
-      transition: color 0.3s ease; }
-    .socials a:after {
+    .socials a:before, .socials a:after, .socials a span:before, .socials a span:after {
+      -webkit-backface-visibility: hidden;
+      -moz-backface-visibility: hidden;
+      backface-visibility: hidden;
+      -webkit-transition: all 0.3s ease;
+      -moz-transition: all 0.3s ease;
+      -ms-transition: all 0.3s ease;
+      -o-transition: all 0.3s ease;
+      transition: all 0.3s ease; }
+    .socials a:before, .socials a:after {
+      -webkit-transform: rotateY(0);
+      -moz-transform: rotateY(0);
+      -ms-transform: rotateY(0);
+      -o-transform: rotateY(0);
+      transform: rotateY(0); }
+    .socials a:before, .socials a span:before {
       content: "";
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
-      background-color: #8A0651;
-      -webkit-border-radius: 50%;
-      -moz-border-radius: 50%;
-      border-radius: 50%;
-      -webkit-transform: scale(0);
-      -moz-transform: scale(0);
-      -ms-transform: scale(0);
-      -o-transform: scale(0);
-      transform: scale(0);
-      -webkit-transition: all 0.3s ease;
-      -moz-transition: all 0.3s ease;
-      -ms-transition: all 0.3s ease;
-      -o-transition: all 0.3s ease;
-      transition: all 0.3s ease; }
-    .socials a:hover:before, .socials a:focus:before {
-      color: #fff; }
-    .socials a:hover:after, .socials a:focus:after {
-      -webkit-transform: scale(1);
-      -moz-transform: scale(1);
-      -ms-transform: scale(1);
-      -o-transform: scale(1);
-      transform: scale(1); }
-  .socials .github:before {
+      background-color: #fff;
+      -webkit-border-radius: 50% 0 50% 0;
+      -moz-border-radius: 50% 0 50% 0;
+      border-radius: 50% 0 50% 0; }
+    .socials a:after, .socials a span:after {
+      position: relative;
+      display: block;
+      font-size: 36px;
+      line-height: 1;
+      color: #191919; }
+    .socials a span {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 8px; }
+      .socials a span:before, .socials a span:after {
+        -webkit-transform: rotateY(180deg);
+        -moz-transform: rotateY(180deg);
+        -ms-transform: rotateY(180deg);
+        -o-transform: rotateY(180deg);
+        transform: rotateY(180deg);
+        backface-visibility: hidden; }
+      .socials a span:before {
+        background-color: #8A0651; }
+      .socials a span:after {
+        color: #fff; }
+    .socials a:hover:before, .socials a:hover:after, .socials a:focus:before, .socials a:focus:after {
+      -webkit-transform: rotateY(180deg);
+      -moz-transform: rotateY(180deg);
+      -ms-transform: rotateY(180deg);
+      -o-transform: rotateY(180deg);
+      transform: rotateY(180deg); }
+    .socials a:hover span:before, .socials a:hover span:after, .socials a:focus span:before, .socials a:focus span:after {
+      -webkit-transform: rotateY(0);
+      -moz-transform: rotateY(0);
+      -ms-transform: rotateY(0);
+      -o-transform: rotateY(0);
+      transform: rotateY(0); }
+  .socials .github:after, .socials .github span:after {
     content: ""; }
-  .socials .codepen:before {
+  .socials .codepen:after, .socials .codepen span:after {
     content: "";
     top: -1px;
     left: 1px; }
-  .socials .instagram:before {
+  .socials .instagram:after, .socials .instagram span:after {
     content: "";
     left: 1px; }
-  .socials .twitter:before {
+  .socials .twitter:after, .socials .twitter span:after {
     content: ""; }
 
 .input-group {
@@ -914,52 +937,18 @@ input[type=text], input[type=email], input[type=search], input[type=tel], input[
 .button, button[type=submit] {
   position: relative;
   display: inline-block;
-  padding: 0.625em 2.5em;
+  padding: 0.66667em 2.22222em 0.44444em;
   margin: 6px;
   border: 0;
   outline: none;
   background: #8A0651;
   color: #fff;
+  font-size: 18px;
   font-family: "Josefin Slab", serif;
   text-transform: uppercase; }
-  .button:before, button[type=submit]:before {
-    content: "";
-    position: absolute;
-    top: -6px;
-    left: -6px;
-    right: -6px;
-    bottom: -6px;
-    border: 4px solid #8A0651;
-    -webkit-transform: scale(0.8, 0.7);
-    -moz-transform: scale(0.8, 0.7);
-    -ms-transform: scale(0.8, 0.7);
-    -o-transform: scale(0.8, 0.7);
-    transform: scale(0.8, 0.7);
-    opacity: 1;
-    filter: alpha(opacity=100);
-    -webkit-transition: all 0.4s ease;
-    -moz-transition: all 0.4s ease;
-    -ms-transition: all 0.4s ease;
-    -o-transition: all 0.4s ease;
-    transition: all 0.4s ease; }
-  .button:hover, button[type=submit]:hover {
-    background-color: #FFF056; }
-  .button:hover:before, button[type=submit]:hover:before {
-    -webkit-transform: scale(1, 1);
-    -moz-transform: scale(1, 1);
-    -ms-transform: scale(1, 1);
-    -o-transform: scale(1, 1);
-    transform: scale(1, 1);
-    opacity: 1;
-    filter: alpha(opacity=100); }
-  .button:focus:before, button[type=submit]:focus:before {
-    -webkit-transform: scale(1.15, 1.24);
-    -moz-transform: scale(1.15, 1.24);
-    -ms-transform: scale(1.15, 1.24);
-    -o-transform: scale(1.15, 1.24);
-    transform: scale(1.15, 1.24);
-    opacity: 0;
-    filter: alpha(opacity=0); }
+  .button:hover, .button:focus, button[type=submit]:hover, button[type=submit]:focus {
+    color: #fff;
+    background-color: #600438; }
 
 .error-msg {
   display: block;
