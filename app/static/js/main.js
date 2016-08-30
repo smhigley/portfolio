@@ -74,7 +74,7 @@
       // place leaf towards the top left
       leaf.x = this.width * 2 - Math.random()*this.width*1.75;
       leaf.y = -10;
-      leaf.z = Math.random()*100 - 50;
+      leaf.z = Math.random()*200;
       if (leaf.x > this.width) {
         leaf.x = this.width + 10;
         leaf.y = Math.random()*this.height/2;
@@ -140,7 +140,6 @@
         this.options.wind.magnitude = Math.random() * this.options.wind.maxSpeed;
         this.options.wind.duration = this.options.wind.magnitude * 50 + (Math.random() * 20 - 10);
         this.options.wind.start = this.timer;
-        console.log('speed:', this.options.wind.magnitude, 'duration:', this.options.wind.duration);
 
         var screenHeight = this.height;
 
@@ -173,7 +172,8 @@
           type: 1,
           start: 0,
 
-        }
+        },
+        image: 1
       };
       this._resetLeaf(leaf);
       this.leaves.push(leaf);

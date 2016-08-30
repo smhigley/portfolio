@@ -436,9 +436,13 @@ html {
       width: 33.3333%; } }
 
 .container {
+  position: relative;
   width: 100%;
   overflow: hidden;
-  padding: 3.125em 1.25em 1.25em; }
+  padding: 3.125em 1.25em 1.25em;
+  -webkit-box-shadow: 8px 0 0 0 rgba(25, 25, 25, 0.2);
+  -moz-box-shadow: 8px 0 0 0 rgba(25, 25, 25, 0.2);
+  box-shadow: 8px 0 0 0 rgba(25, 25, 25, 0.2); }
   @media only screen and (min-width: 48.75em) {
     .container {
       width: 66.6666%;
@@ -452,7 +456,8 @@ html {
   position: relative;
   width: 100%;
   padding-bottom: 33%;
-  background-color: #DFE2DB; }
+  background: url(../images/sidebar-bg.png) no-repeat center center;
+  background-size: cover; }
   @media only screen and (min-width: 48.75em) {
     .sidebar {
       position: fixed;
@@ -801,10 +806,10 @@ hr {
       position: absolute;
       top: 0;
       left: 0;
-      width: 40px;
+      width: 20px;
       height: 20px;
-      background: url(../images/leaf.svg) no-repeat center;
-      background-size: 100% 100%;
+      background: url(../images/leaf.svg) no-repeat;
+      background-size: 100%;
       -webkit-transform-style: preserve-3d;
       -moz-transform-style: preserve-3d;
       -o-transform-style: preserve-3d;

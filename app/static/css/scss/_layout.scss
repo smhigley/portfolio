@@ -43,9 +43,11 @@ html {
 }
 
 .container {
+  position: relative;
   width: 100%;
   overflow: hidden;
   padding: em-calc(50) em-calc(20) em-calc(20);
+  @include box-shadow(8px 0 0 0 rgba($dark, 0.2));
   @include bp($bp-layout) {
     width: 66.6666%;
     padding: em-calc(80) em-calc(30) em-calc(30);
@@ -60,7 +62,8 @@ html {
   position: relative;
   width: 100%;
   padding-bottom: 33%;
-  background-color: $light-grey;
+  background: url(../images/sidebar-bg.png) no-repeat center center;
+  background-size: cover;
   @include bp($bp-layout) {
     position: fixed;
     right: 0;
