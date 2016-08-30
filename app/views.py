@@ -75,7 +75,8 @@ def create_user():
   return render_template("login.html", form=form, title='Create New User')
 
 # Contact Page
-@app.route('/contact', methods=['GET', 'POST'])
+# not sure if I want a contact page, leaving out for now
+# @app.route('/contact', methods=['GET', 'POST'])
 def contact():
   form = ContactForm()
 

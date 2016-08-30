@@ -9,5 +9,5 @@ app/static/.sass-cache/
 venv/
 icomoon/
 uploads/
-sarahmhigley.wsgi
+portfolio.wsgi
 .htaccess

@@ -184,10 +184,10 @@
     this.viewport.appendChild(this.world);
 
     // set perspective
-    this.world.style.webkitPerspective = 400;
-    this.world.style.MozPerspective = 400;
-    this.world.style.oPerspective = 400;
-    this.world.style.perspective = 400;
+    this.world.style.webkitPerspective = "400px";
+    this.world.style.MozPerspective = "400px";
+    this.world.style.oPerspective = "400px";
+    this.world.style.perspective = "400px";
   }
 
   LeafScene.prototype.render = function() {
